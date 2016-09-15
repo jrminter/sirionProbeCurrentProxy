@@ -5,10 +5,10 @@
 # 2016-09-15  JRM  Simulate the peak intensity of Si at a series
 #                  of accelerating voltages at a standard probe
 #                  current. Use output to normalize probe current
-#                  series at a single voltage. 
+#                  series at a single voltage. More vopltages is better.
 #                  
-# This script required  22.659 min on ROCPW7ZC5C42 for 10K traj
-# Elapse: 0:22:39.9
+# This script required  11.224 min on ROCPW7ZC5C42 for 1000 traj
+# Elapse: 0:11:13.8
 
 import sys
 sys.packageManager.makeJavaPackage("gov.nist.microanalysis.NISTMonte.Gen3", "CharacteristicXRayGeneration3, BremsstrahlungXRayGeneration3,FluorescenceXRayGeneration3, XRayTransport3", None)
@@ -52,7 +52,7 @@ rptDir = wrkDir + '/simulate-Si-voltage-series Results/'
 
 
 det      = findDetector("Oxford p4 05eV 2K")
-nTraj    = 10000    # trajectories
+nTraj    =  1000    # trajectories
 lt       =   100    # sec
 pc       =     1.0  # nA
 kVstart  =     5
@@ -78,7 +78,7 @@ iCount = 0
 
 for e0 in lE0:
 
-    spc = mc3.simulate(si, det, float(e0), dose, False, nTraj, True, True, {})
+    spc = mc3.simulate(si, det, float(e0), dose, True, nTraj, True, True, {})
 
     sName = "Si-%g-kV" % (e0)
     spc.rename(sName)
