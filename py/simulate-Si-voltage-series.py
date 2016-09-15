@@ -9,6 +9,8 @@
 #                  
 # This script required  11.224 min on ROCPW7ZC5C42 for 1000 traj
 # Elapse: 0:11:13.8
+# This script required  112.106 min on crunch for 100000 traj
+# Elapse: 1:52:07.6
 
 import sys
 sys.packageManager.makeJavaPackage("gov.nist.microanalysis.NISTMonte.Gen3", "CharacteristicXRayGeneration3, BremsstrahlungXRayGeneration3,FluorescenceXRayGeneration3, XRayTransport3", None)
@@ -52,7 +54,7 @@ rptDir = wrkDir + '/simulate-Si-voltage-series Results/'
 
 
 det      = findDetector("Oxford p4 05eV 2K")
-nTraj    =  1000    # trajectories
+nTraj    = 10000    # trajectories
 lt       =   100    # sec
 pc       =     1.0  # nA
 kVstart  =     5

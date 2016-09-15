@@ -9,7 +9,7 @@ gitDir <- Sys.getenv("GIT_HOME")
 str.wd <- paste0(gitDir, '/sirionProbeCurrentProxy/R/')
 setwd(str.wd)
 
-fi <-'../dat/csv/Si-1000-Traj.csv'
+fi <-'../dat/csv/Si-10000-Traj.csv'
 
 df <- read.csv(fi, header=TRUE, as.is=TRUE)
 print(head(df))
@@ -51,11 +51,11 @@ siInt <- ggplot(df, aes(x=e0.kV, y=Si.Int.mu)) +
 print(siInt)
 
 
-fi <- '../pdf/Si-voltage-series-plt.pdf'
+fi <- '../pdf/Si-voltage-series-plt-10000.pdf'
 ggsave(siInt, file=fi, width=9.0, height=6.0, units="in", dpi=300)
 
-fi <- '../png/Si-voltage-series-plt.png'
+fi <- '../png/Si-voltage-series-plt-10000.png'
 ggsave(siInt, file=fi, width=9.0, height=6.0, units="in", dpi=300)
 
-# fi <- '../dat/csv/c-ctd-si-loess-pred.csv'
-# write.csv(df4, file=fi, row.names=FALSE)
+fi <- '../dat/csv/si-loess-pred-10000.csv'
+write.csv(df3, file=fi, row.names=FALSE)
