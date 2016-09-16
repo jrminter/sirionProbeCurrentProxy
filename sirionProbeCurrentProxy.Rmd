@@ -64,7 +64,7 @@ grid.raster(img)
 I had measured Si at 5 kV (the values are in cts/nA-sec)
 
 ```{r, echo=FALSE}
-fi <- 'dat/csv/2016-09-07-C-on-Si-5kV.csv'
+fi <- 'dat/csv/2016-09-07-C-on-Si-5kV-2K.csv'
 df.exp <- read.csv(fi, header=TRUE, as.is=TRUE)
 kable(df.exp)
 ```

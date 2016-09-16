@@ -1,4 +1,4 @@
-# analyze-C-on-Si-spc.py
+# 2016-09-16-C-on-Si-20kV-2K.py
 #
 #   Date      Who  Comment
 # ----------  ---  -----------------------------------------------
@@ -41,13 +41,13 @@ prjDir = gitHom + relPrj
 datDir = prjDir + "/dat"
 wrkDir = prjDir + "/py"
 csvDir = datDir + "/csv"
-spcDir = datDir + "/msa/Si-Cal-5kV"
+spcDir = datDir + "/msa/Si-Cal-20kV"
 
 jmg.ensureDir(wrkDir)
 
 os.chdir(wrkDir)
 
-rptDir = wrkDir + '/analyze-C-on-Si-spc Results/'
+rptDir = wrkDir + '/2016-09-16-C-on-Si-20kV-2K Results/'
 
 
 det = findDetector("Oxford p4 05eV 2K")
@@ -64,7 +64,7 @@ lRatio = [] # an array for C/Si peak ratio
 iCount = 0
 
 print(spcDir + '/*.msa')
-for name in glob.glob(spcDir + '/*.msa'):
+for name in glob.glob(spcDir + '/*-2K.msa'):
     name = name.replace('\\', '/')
     bn = os.path.basename(name)
     na = bn.split('.msa')[0]
@@ -86,7 +86,7 @@ for name in glob.glob(spcDir + '/*.msa'):
     print((na, pc, siI[0], siI[1], ratio))
     iCount += 1
 
-basFile ="2016-09-07-C-on-Si-5kV.csv"
+basFile ="2016-09-16-C-on-Si-20kV-2K.csv"
 strOutFile = csvDir + "/" + basFile
 
 f=open(strOutFile, 'w')
