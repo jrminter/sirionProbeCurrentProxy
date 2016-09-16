@@ -1,0 +1,20 @@
+---
+title: "Sirion Probe Current Proxy"
+author: "J. R. Minter"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  knitr:::html_vignette:
+    css: theme/jm-mod-vignette.css
+    number_sections: yes
+    toc: yes
+---
+
+```{r, echo=FALSE}
+library(png)
+library(grid)
+```
+
+# Objective
+
+The objective of this project is to develop a proxy for the measurement
+of the probe current on our Sirion FEG-SEM.
