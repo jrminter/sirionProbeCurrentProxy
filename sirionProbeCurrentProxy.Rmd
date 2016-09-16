@@ -18,3 +18,44 @@ library(grid)
 
 The objective of this project is to develop a proxy for the measurement
 of the probe current on our Sirion FEG-SEM.
+
+# Background
+
+A quality control analysis during the summer of 2016 monitored the
+performance of the Oxford detector.
+
+```{r fig.width=7.5, fig.height=5,echo=FALSE,fig.align='center', fig.cap="Performance of the Oxford XMAX detector."}
+img <- readPNG("png/Oxford-P4-05eV-2K-ggp.png")
+grid.raster(img)
+```
+Note that the precison of the channel width, zero offset, and resolution
+is quite stable. There is, however much more drift in the mean intensity
+of the Cu-L peak measured. Scientists at NIST have experienced similar
+problems on their FEI Nova NanoSEM. My hypothesis is that there is
+current leakage on the connection to the stage connector to the
+Faraday cup. The variance is approximately 5%. The uncertainty in the
+peak integrals is much lower.
+
+My proposal is to use the X-Ray peak integral from a Si line from small
+chips of conductive Si as an internal standard as a proxy for the
+probe current.
+
+# The model
+
+I began by simulating the spectrum from Si at the voltages I commonly
+use.
+
+
+```{r fig.width=7.5, fig.height=5.231,echo=FALSE,fig.align='center', fig.cap="Simulation of Si at 100 nA-sec."}
+img <- readPNG("png/simulate-Si-voltage-series.png")
+grid.raster(img)
+```
+
+Next, I simulated 10,000 trajectories for beam voltages between 5
+and 30 kV in 1 kV steps, assuming a dose of 100 na-sec dose.
+
+
+```{r fig.width=7.5, fig.height=5.231,echo=FALSE,fig.align='center', fig.cap="Simulation of Si at 100 nA-sec. Note that the curve is monotonic but non-linear. It is best fit using the LOESS approach."}
+img <- readPNG("png/Si-voltage-series-plt-10000.png")
+grid.raster(img)
+```
