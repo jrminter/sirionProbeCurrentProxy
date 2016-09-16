@@ -29,7 +29,7 @@ performance of the Oxford detector.
 img <- readPNG("png/Oxford-P4-05eV-2K-ggp.png")
 grid.raster(img)
 ```
-Note that the precison of the channel width, zero offset, and resolution
+Note that the precision of the channel width, zero offset, and resolution
 is quite stable. There is, however much more drift in the mean intensity
 of the Cu-L peak measured. Scientists at NIST have experienced similar
 problems on their FEI Nova NanoSEM. My hypothesis is that there is
@@ -82,3 +82,36 @@ a factor of `r round(df.exp[1,3]/df.calc[1,2], 4)`. Note that this was
 measured at a 5 mm working distance and the measured *sweet spot* is closer
 to 3.5 mm. I have also suspected that we were unable to safely insert 
 the detector to a point to achieve the calculated solid angle.
+
+I tried this at 20 kV, again with a home-made Faraday cage:
+
+
+```{r, echo=FALSE}
+fi <- 'dat/csv/2016-09-16-C-on-Si-20kV-2K.csv'
+df.exp <- read.csv(fi, header=TRUE, as.is=TRUE)
+kable(df.exp)
+```
+
+The variance was quite troubling. So I tried the same experiment with
+the Ted Pella XCS-8, which has a Cu Faraday cup drilled into the mount.
+This was a more consistent calibration.
+
+
+```{r, echo=FALSE}
+fi <- 'dat/csv/2016-09-16-C-on-Cu-20kV-2K.csv'
+df.exp <- read.csv(fi, header=TRUE, as.is=TRUE)
+mu <- round(mean(df.exp$Cu.Int.mu), 2)
+uc <- round(sd(df.exp$Cu.Int.mu), 2)
+kable(df.exp)
+```
+
+It also looks like we can ignore the C in this case - it was barely
+detectable.
+
+We can compute the mean value, `r mu`, the standard deviation, `r uc`,
+or on a percentage basis, `r round(100.0*uc/mu, 2)` - about an order of
+magnitude better than probe current measurements.
+
+Next, I need to simulate the Cu-L intensity as a function of voltage
+for a standard probe current. I can always use Cu tape on individual
+specimens...
