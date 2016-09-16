@@ -12,6 +12,7 @@ output:
 ```{r, echo=FALSE}
 library(png)
 library(grid)
+library(knitr)
 ```
 
 # Objective
@@ -59,3 +60,25 @@ and 30 kV in 1 kV steps, assuming a dose of 100 na-sec dose.
 img <- readPNG("png/Si-voltage-series-plt-10000.png")
 grid.raster(img)
 ```
+
+I had measured Si at 5 kV (the values are in cts/nA-sec)
+
+```{r, echo=FALSE}
+fi <- 'dat/csv/2016-09-07-C-on-Si-5kV.csv'
+df.exp <- read.csv(fi, header=TRUE, as.is=TRUE)
+kable(df.exp)
+```
+
+And my predicted values
+
+```{r, echo=FALSE}
+fi <- 'dat/csv/si-loess-pred-10000.csv'
+df.calc <- read.csv(fi, header=TRUE, as.is=TRUE)
+kable(df.calc[1,])
+```
+
+So, at 5 kV, my measured result differs from my calculated result by
+a factor of `r round(df.exp[1,3]/df.calc[1,2], 4)`. Note that this was
+measured at a 5 mm working distance and the measured *sweet spot* is closer
+to 3.5 mm. I have also suspected that we were unable to safely insert 
+the detector to a point to achieve the calculated solid angle.
