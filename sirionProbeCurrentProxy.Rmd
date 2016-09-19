@@ -122,3 +122,7 @@ img <- readPNG("png/Cu-voltage-series-plt-10000.png")
 grid.raster(img)
 ```
 
+One option would be to create a specimen with Cu tape and a Si chip and measure
+the peak intensities at a high probe current at 20 kV. Perhaps I could use the
+ratio and my Cu calibration to construct data from my Si chips. This may be
+better than Cu tape on a day-to-day basis.
