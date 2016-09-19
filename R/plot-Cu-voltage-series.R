@@ -41,7 +41,7 @@ siInt <- ggplot(df, aes(x=e0.kV, y=Cu.Int.mu)) +
   annotate("text", label = 'LOESS',
            x = 23, y = 15000.,
            size = 5, colour = "blue") +
-  ggtitle("Monte Carlo model of Cu peak intensity") +
+  ggtitle("Monte Carlo model of Cu-L peak intensity") +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14))# or ,face="bold"))
  # +

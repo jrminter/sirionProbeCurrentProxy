@@ -115,3 +115,10 @@ magnitude better than probe current measurements.
 Next, I need to simulate the Cu-L intensity as a function of voltage
 for a standard probe current. I can always use Cu tape on individual
 specimens...
+
+
+```{r fig.width=7.5, fig.height=5,echo=FALSE,fig.align='center', fig.cap="Simulation of Cu at 100 nA-sec. Note that the curve is smooth and non-linear. It is best fit using the LOESS approach."}
+img <- readPNG("png/Cu-voltage-series-plt-10000.png")
+grid.raster(img)
+```
+
