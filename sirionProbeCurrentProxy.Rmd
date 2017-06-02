@@ -80,8 +80,11 @@ kable(df.calc[1,])
 So, at 5 kV, my measured result differs from my calculated result by
 a factor of `r round(df.exp[1,3]/df.calc[1,2], 4)`. Note that this was
 measured at a 5 mm working distance and the measured *sweet spot* is closer
-to 3.5 mm. I have also suspected that we were unable to safely insert 
-the detector to a point to achieve the calculated solid angle.
+to 3.5 mm. I had also measured the backround-subtracted peak integral with
+DTSA-II and the integration range may be different than Oxford, so I corrected
+the plots to that working distance. Given the short working distance, I suspect
+that we were unable to safely insert the detector to a point to achieve the
+calculated solid angle.
 
 I tried this at 20 kV, again with a home-made Faraday cage:
 

@@ -12,6 +12,10 @@ setwd(str.wd)
 fi <-'../dat/csv/Si-10000-Traj.csv'
 
 df <- read.csv(fi, header=TRUE, as.is=TRUE)
+
+# add the fudge factor for 4 mm and difference in integral
+df$Si.Int.mu <- 0.3208*df$Si.Int.mu
+df$Si.Int.unc <- 0.3208*df$Si.Int.unc
 print(head(df))
 
 
@@ -35,15 +39,16 @@ siInt <- ggplot(df, aes(x=e0.kV, y=Si.Int.mu)) +
   ylab("Si-K intensity [cts/nA-sec]") +
   geom_line(color='red', size=1.25, aes(color="red"), data=df2) +
   annotate("text", label = 'lm',
-           x = 25, y = 110000.,
+           x = 25, y = 35000.,
            size = 5, colour = "red") +
   geom_line(color='blue', size=1.25, aes(color="blue"), data=df3) +
   annotate("text", label = 'LOESS',
-           x = 25, y = 70000.,
+           x = 25, y = 25000.,
            size = 5, colour = "blue") +
-  ggtitle("Monte Carlo model of Si peak intensity") +
+  ggtitle("Monte Carlo model of Si peak intensity at 4 mm WD") +
   theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14))# or ,face="bold"))
+        axis.title=element_text(size=14),
+        plot.title = element_text(hjust = 0.5))
  # +
 #annotate("text", x = 0, y = 1750, label = "core") +
 #annotate("text", x = 3.75, y = 1750, label = "shell")

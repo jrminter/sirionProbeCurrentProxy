@@ -12,6 +12,10 @@ setwd(str.wd)
 fi <-'../dat/csv/Cu-10000-Traj.csv'
 
 df <- read.csv(fi, header=TRUE, as.is=TRUE)
+
+# add the fudge factor for 4 mm and difference in integral
+df$Cu.Int.mu <- 0.6043*df$Cu.Int.mu
+df$Cu.Int.unc <- 0.6043*df$Cu.Int.unc
 print(head(df))
 
 
@@ -39,11 +43,12 @@ siInt <- ggplot(df, aes(x=e0.kV, y=Cu.Int.mu)) +
   #          size = 5, colour = "red") +
   geom_line(color='blue', size=1.25, aes(color="blue"), data=df3) +
   annotate("text", label = 'LOESS',
-           x = 23, y = 15000.,
+           x = 23, y = 8500.,
            size = 5, colour = "blue") +
-  ggtitle("Monte Carlo model of Cu-L peak intensity") +
+  ggtitle("Monte Carlo model of Cu-L peak intensity at 4 mm WD") +
   theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14))# or ,face="bold"))
+        axis.title=element_text(size=14),
+        plot.title = element_text(hjust = 0.5))
  # +
 #annotate("text", x = 0, y = 1750, label = "core") +
 #annotate("text", x = 3.75, y = 1750, label = "shell")
