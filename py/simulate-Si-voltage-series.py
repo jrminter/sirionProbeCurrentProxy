@@ -57,7 +57,7 @@ det      = findDetector("Oxford p4 05eV 2K")
 nTraj    = 10000    # trajectories
 lt       =   100    # sec
 pc       =     1.0  # nA
-kVstart  =     5
+kVstart  =     3
 kVstep   =     1
 kVend    =    30
 
